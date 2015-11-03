@@ -1,0 +1,5 @@
+mnist_loader -> split -r=0.8 -> (($train_data, $test_data), ($train_labels, $test_labels));
+$train_data, $train_labels -> $train -> sk_svm --lambda=0.001 -> !model;
+$test_data, $test_labels -> $test;
+!model, $test -> test_model --fscore -> print;
+!model -> save_model;

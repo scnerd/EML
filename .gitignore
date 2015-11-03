@@ -1,0 +1,6 @@
+parser.out
+parsetab.py
+*.pdf
+*.png
+__pycache__
+*.pyc
