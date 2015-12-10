@@ -89,7 +89,7 @@ def graph(root_def):
       graph.add_node(node)
    for edge in edges:
       graph.add_edge(edge)
-   graph.write_pdf('sample.pdf')         
+   graph.write_pdf('sample.pdf')
       
 #class ForLoopDef(object):
 #   def __init__(self, target_cache, source_cache, body_block):
