@@ -12,10 +12,10 @@ tokens = [
 'ARROW'
 ] + list(reserved.values())
 
-literals = '-;(),=$!'#+'
+literals = '-;(),=$!' #+'
 
 #t_ID = r'[a-zA-Z][\w\-]*'
-t_LIT_STR = r'"(?:\\"|[^"])*?"'
+#t_LIT_STR = r'"(?:\\"|[^"])*?"'
 t_LIT_NUM = r'\d+(\.\d*)?'
 t_ARROW = r'->'
 
@@ -23,10 +23,19 @@ def t_ID(t):
    r'[a-zA-Z]\w*'
    t.type = reserved.get(t.value, 'ID')
    return t
+   
+def t_LIT_STR(t):
+   r'"(?:\\"|[^"])*?"'
+   t.value = t.value[1:-1]
+   return t
 
 def t_newline(t):
    r'\n+'
    t.lexer.lineno += len(t.value)
+   
+def t_COMMENT(t):
+   r"\#.*"
+   pass
         
 t_ignore  = ' \t'
         

@@ -17,6 +17,9 @@ class Main(Command):
       with open(name, 'wb') as file:
          for input in self.inputs:
             for val in input:
+               print("Saving model of type '%s'" % type(val).__name)
                pickle.dump(val, file)
+            print("Done saving from input %d" % self.inputs.index(input))
             pickle.dump(EndOfList())
+         print("Done saving")
          pickle.dump(EndOfInputs())

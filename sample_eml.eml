@@ -1,7 +1,7 @@
 mnist_loader -> split -r=0.8 -> (($train_data_2d, $test_data_2d), ($train_labels, $test_labels));
 $train_data_2d, $test_data_2d -> flatten -> $train_data, $test_data;
 $train_data, $train_labels -> $train;
-$train -> count --interval=100 -> sk_svm --verbose=1 -C=0.1 -> $model;
+$train -> count --interval=100 -> sk_svm --verbose=1 -C=0.1 -> count -> $model;
 $test_data, $test_labels -> $test;
-$model, $test -> test_model --fscore -> print;
-$model -> save_model --name="mnist_svm";
+$model, $test -> count -> test_model --fscore -> print;
+# $model -> count -> save_model --name="mnist_svm";
