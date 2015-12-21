@@ -1,7 +1,7 @@
 import lexer as _lexer
 import yaccer as _yaccer
 from ply import lex, yacc
-import eml_ast
+#import eml_ast
 import eml_exe_ast
 
 l = lex.lex(module=_lexer)

@@ -1,4 +1,8 @@
-import pydot
+try:
+   import pydot
+except ImportError:
+   import sys
+   print("Pydot could not be found, AST cannot be graphed", file=sys.stderr)
 
 class CommandDef(object):
    def __init__(self, cmd, **args):

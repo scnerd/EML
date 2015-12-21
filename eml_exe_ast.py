@@ -1,12 +1,18 @@
 import modules
 import eml_ast
-import sys, os
 from threading import Thread
 from multiprocessing import Queue
-from eml.modules import queue_to_iter, iter_to_queue
 from tempfile import NamedTemporaryFile
 import pickle
 import itertools
+# modified from http://stackoverflow.com/questions/279237/import-a-module-from-a-relative-path
+import os, sys, inspect
+# realpath() will make your script run, even if you symlink it :)
+cmd_folder = os.path.realpath(
+        os.path.split(os.path.split(os.path.abspath(inspect.getfile(inspect.currentframe())))[0])[0])
+if cmd_folder not in sys.path:
+    sys.path.insert(0, cmd_folder)
+from eml.modules import queue_to_iter, iter_to_queue
 
 node_ids = 1
 class NodeDef(Thread):
